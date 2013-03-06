@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/css/style.css' />
+    <link rel='stylesheet' href='/css/bootstrap.css' />
+    <script type="text/javascript" src="/js/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="/js/library.js" ></script>
+  </head>
+  <body>
+    <div class="container">
+        <div class="span12">
+            <h1>Welcome to <%= title %></h1>
+
+            <%=cards.length %> CARDS. <br>
+            <i class="mana sm-w"> </i> <i class="mana sm-u"> </i> <i class="mana sm-b"> </i> <i class="mana sm-r"> </i>  <i class="mana sm-g"> </i> 
+            <br>
+            <i class="mana sm-bg"> </i>  <i class="mana sm-gw"> </i>  <i class="mana sm-rw"> </i>  <i class="mana sm-ub"> </i>  <i class="mana sm-rg"> </i>  <i class="mana sm-ur"> </i> 
+            <i class="mana sm-wb"> </i> <i class="mana sm-br"> </i> <i class="mana sm-gu"> </i> <i class="mana sm-wu"> </i>  <i class="mana sm-x"> </i> 
+            <br>
+            <i class="mana sm-1"> </i> <i class="mana sm-2"> </i> <i class="mana sm-3"> </i> <i class="mana sm-4"> </i>  <i class="mana sm-5"> </i> 
+            <i class="mana sm-6"> </i> <i class="mana sm-7"> </i> 
+            <br>
+            <div id="library">
+                <div class="row header">
+                    <div class="span3" data-lfield='name'> name </div>
+                    <div class="span3" data-lfield='type'> type </div>
+                    <div class="span2" data-lfield='mana'> mana  </div>
+                    <div class="span1" data-lfield='power-toughness'> pow/tou</div>
+                    <div class="span1" data-lfield='rarity'> rarity</div>
+                    <div class="span1" data-lfield='set'> set </div>
+                </div>
+                <%  cards.forEach (function (card) {  %>
+                <div class="row">
+                    <div class="span3" data-lfield='name'> 
+                        <a class="showcard" href="#" data-set="<%= card.set %>" data-card-name="<%= card.name %>"><%= card.name %></a>
+                    </div>
+                    <div class="span3" data-lfield='type'> <%= card.type %> </div>
+                    <div class="span2" data-lfield='mana'> 
+                        <%  for (var i=0; i<card.mana.length; i++) { %>
+                                <i class="mana sm-<%=card.mana[i] %>"></i>
+                        <%  }  %>
+                    </div>
+                    <div class="span1" data-lfield='power-toughness'> 
+                        <%= (card.power ? card.power + " / " + (card.toughness ? card.toughness : '*') : (card.toughness ? "* / " + card.toughness : "")) %> 
+                    </div>
+                    <div class="span1" data-lfield='rarity'> <%= card.rarity %> </div>
+                    <div class="span1" data-lfield='set'> <%= card.set %> </div>
+                    <div class="image-placeholder"> </div>
+                </div>
+
+                <% }); %>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
