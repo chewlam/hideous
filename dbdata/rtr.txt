@@ -6,7 +6,7 @@ Pow/Tou:	5/6
 Card Text:	Flying  When Angel of Serenity enters the battlefield, you may exile up to three other target creatures from the battlefield and/or creature cards from graveyards.  When Angel of Serenity leaves the battlefield, return the exiled cards to their owners' hands.
 Flavor Text:	
 Artist:		Aleksi Briclot
-Rarity:		R
+Rarity:		M
 Card #:		1/274
 
 Card Name:	Armory Guard
@@ -479,7 +479,7 @@ Pow/Tou:	%4#
 Card Text:	|+1|: Until your next turn, whenever a creature an opponent controls attacks, it gets -1/-0 until end of turn.  |-2|: Reveal the top three cards of your library. An opponent separates them into two piles. Put one pile into your hand and the other on the bottom of your library in any order.  |-8|: For each player, search that player's library for a nonland card and exile it, then that player shuffles his or her library. You may cast those cards without paying their mana costs.
 Flavor Text:	
 Artist:		Jaime Jones
-Rarity:		R
+Rarity:		M
 Card #:		44/274
 
 Card Name:	Mizzium Skin
@@ -776,7 +776,7 @@ Pow/Tou:	6/5
 Card Text:	Whenever a creature you control deals combat damage to a player, put that many +1/+1 counters on it.
 Flavor Text:	"Jarad fancies himself king of the undercity, but he's merely king of rot."
 Artist:		Winona Nelson
-Rarity:		R
+Rarity:		M
 Card #:		71/274
 
 Card Name:	Ogre Jailbreaker
@@ -1205,7 +1205,7 @@ Pow/Tou:	6/6
 Card Text:	Flying  Whenever a Dragon you control attacks, put a 6/6 red Dragon creature token with flying onto the battlefield.
 Flavor Text:	The fear of dragons is as old and as powerful as the fear of death itself.
 Artist:		Mark Zug
-Rarity:		R
+Rarity:		M
 Card #:		110/274
 
 Card Name:	Vandalblast
@@ -1535,7 +1535,7 @@ Pow/Tou:	15/15
 Card Text:	Trample  When Worldspine Wurm dies, put three 5/5 green Wurm creature tokens with trample onto the battlefield.  When Worldspine Wurm is put into a graveyard from anywhere, shuffle it into its owner's library.
 Flavor Text:	
 Artist:		Richard Wright
-Rarity:		R
+Rarity:		M
 Card #:		140/274
 
 Card Name:	Abrupt Decay
@@ -1568,7 +1568,7 @@ Pow/Tou:	5/5
 Card Text:	Trample  When Armada Wurm enters the battlefield, put a 5/5 green Wurm creature token with trample onto the battlefield.
 Flavor Text:	No one in the Conclave acts alone.
 Artist:		Volkan Baga
-Rarity:		R
+Rarity:		M
 Card #:		143/274
 
 Card Name:	Auger Spree
@@ -1744,7 +1744,7 @@ Pow/Tou:
 Card Text:	Exile the top X cards of your library. For each instant and sorcery card with converted mana cost X or less among them, you may cast that card without paying its mana cost. Then put all cards exiled this way that weren't cast into your graveyard.
 Flavor Text:	
 Artist:		Dan Scott
-Rarity:		R
+Rarity:		M
 Card #:		159/274
 
 Card Name:	Essence Backlash
@@ -1876,7 +1876,7 @@ Pow/Tou:	6/4
 Card Text:	Flying  Whenever a creature attacks you or a planeswalker you control, you may draw a card.
 Flavor Text:	"I serve only justice. But through that duty, I serve all of Ravnica."
 Artist:		Scott M. Fischer
-Rarity:		R
+Rarity:		M
 Card #:		171/274
 
 Card Name:	Izzet Charm
@@ -1909,7 +1909,7 @@ Pow/Tou:	2/2
 Card Text:	Jarad, Golgari Lich Lord gets +1/+1 for each creature card in your graveyard.  %1%B%G, Sacrifice another creature: Each opponent loses life equal to the sacrificed creature's power.  Sacrifice a Swamp and a Forest: Return Jarad from your graveyard to your hand.
 Flavor Text:	
 Artist:		Eric Deschamps
-Rarity:		R
+Rarity:		M
 Card #:		174/274
 
 Card Name:	Jarad's Orders
@@ -2008,7 +2008,7 @@ Pow/Tou:	5/5
 Card Text:	Flying  Whenever Niv-Mizzet, Dracogenius deals damage to a player, you may draw a card.  %U%R: Niv-Mizzet deals 1 damage to target creature or player.
 Flavor Text:	He has no patience for minds that do not inspire him or explode by trying.
 Artist:		Todd LockWood
-Rarity:		R
+Rarity:		M
 Card #:		183/274
 
 Card Name:	Rakdos Charm
@@ -2052,7 +2052,7 @@ Pow/Tou:	6/6
 Card Text:	You can't cast Rakdos, Lord of Riots unless an opponent lost life this turn.  Flying, trample  Creature spells you cast cost %1 less to cast for each 1 life your opponents have lost this turn.
 Flavor Text:	
 Artist:		Vincent Proce
-Rarity:		R
+Rarity:		M
 Card #:		187/274
 
 Card Name:	Rakdos's Return
@@ -2063,7 +2063,7 @@ Pow/Tou:
 Card Text:	Rakdos's Return deals X damage to target opponent. That player discards X cards.
 Flavor Text:	When Lord Rakdos stirred from his slumber, everyone else's nightmare began.
 Artist:		Daarken
-Rarity:		R
+Rarity:		M
 Card #:		188/274
 
 Card Name:	Righteous Authority
@@ -2195,7 +2195,7 @@ Pow/Tou:
 Card Text:	You gain X life and draw X cards.
 Flavor Text:	"Let the knowledge of absolute law inspire you to live a life of absolute order."
 Artist:		Slawomir Maniak
-Rarity:		R
+Rarity:		M
 Card #:		200/274
 
 Card Name:	Supreme Verdict
@@ -2261,7 +2261,7 @@ Pow/Tou:	2/5
 Card Text:	Whenever another creature enters the battlefield under your control, you gain life equal to that creature's toughness.  %1%G%W, %T: Populate. (Put a token onto the battlefield that's a copy of a creature token you control.)
 Flavor Text:	
 Artist:		Chippy
-Rarity:		R
+Rarity:		M
 Card #:		206/274
 
 Card Name:	Vitu-Ghazi Guildmage
@@ -2283,7 +2283,7 @@ Pow/Tou:	%5#
 Card Text:	|+1|: Until your next turn, whenever a creature deals combat damage to Vraska the Unseen, destroy that creature.  |-3|: Destroy target nonland permanent.  |-7|: Put three 1/1 black Assassin creature tokens onto the battlefield with "Whenever this creature deals combat damage to a player, that player loses the game."
 Flavor Text:	
 Artist:		Aleksi Briclot
-Rarity:		R
+Rarity:		M
 Card #:		208/274
 
 Card Name:	Wayfaring Temple

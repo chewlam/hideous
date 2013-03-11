@@ -2,26 +2,35 @@ a {
   color: #00B7FF;
 }
 #library {
-  padding: 15px;
+  padding: 8px;
   text-align: center;
-  background-color: #AAA;
+  background-color: #555;
+  border-radius: 5px;
 }
 #library .row {
   background-color: #EEE;
   margin: auto;
 }
+#library .row:nth-child(even) {
+  background-color: #AAA;
+}
 #library .row div {
   text-align: left;
   padding: 2px;
-  background-color: #EEE;
 }
 #library .row div.image-placeholder {
   max-width: 250px;
   background: #000;
-  border-radius: 15px;
-  padding: 10px;
+  border-radius: 17px;
+  padding: 6px;
   margin: 40px;
   display: none;
+}
+#library .row div[data-lfield='rarity'] {
+  text-align: center;
+}
+#library .row div[data-lfield='power-toughness'] {
+  text-align: center;
 }
 #library .row.header {
   background: #666;
@@ -33,7 +42,9 @@ a {
   text-transform: capitalize;
   padding-top: 10px;
 }
-.mana {
+/* ***** MANA SYMBOLS ***** */
+[class^="mana-"],
+[class*=" mana-"] {
   background: url('../img/mana.png');
   background-repeat: no-repeat;
   width: 100px;
@@ -41,107 +52,87 @@ a {
   vertical-align: -10%;
   border-radius: 50px;
 }
-i.mana {
+i[class^="mana-"],
+i[class*=" mana-"] {
   display: inline-block;
   float: left;
 }
-.mana.sm-w {
-  background-position: -420px -210px;
+[class^="mana-"].small,
+[class*=" mana-"].small {
   zoom: 15%;
 }
-.mana.sm-u {
-  background-position: -525px -210px;
-  zoom: 15%;
-}
-.mana.sm-r {
-  background-position: -630px -210px;
-  zoom: 15%;
-}
-.mana.sm-b {
-  background-position: -735px -210px;
-  zoom: 15%;
-}
-.mana.sm-g {
-  background-position: -840px -210px;
-  zoom: 15%;
-}
-.mana.sm-wu {
-  background-position: 0px -315px;
-  zoom: 15%;
-}
-.mana.sm-wb {
-  background-position: -105px -315px;
-  zoom: 15%;
-}
-.mana.sm-ub {
-  background-position: -210px -315px;
-  zoom: 15%;
-}
-.mana.sm-ur {
-  background-position: -315px -315px;
-  zoom: 15%;
-}
-.mana.sm-br {
-  background-position: -420px -315px;
-  zoom: 15%;
-}
-.mana.sm-bg {
-  background-position: -525px -315px;
-  zoom: 15%;
-}
-.mana.sm-rw {
-  background-position: -630px -315px;
-  zoom: 15%;
-}
-.mana.sm-rg {
-  background-position: -735px -315px;
-  zoom: 15%;
-}
-.mana.sm-gw {
-  background-position: -840px -315px;
-  zoom: 15%;
-}
-.mana.sm-gu {
-  background-position: -945px -315px;
-  zoom: 15%;
-}
-.mana.sm-x {
-  background-position: -106px -210px;
-  zoom: 15%;
-}
-.mana.sm-1 {
+.mana-1 {
   background-position: -105px 0px;
-  zoom: 15%;
 }
-.mana.sm-2 {
+.mana-2 {
   background-position: -210px 0px;
-  zoom: 15%;
 }
-.mana.sm-3 {
+.mana-3 {
   background-position: -315px 0px;
-  zoom: 15%;
 }
-.mana.sm-4 {
+.mana-4 {
   background-position: -420px 0px;
-  zoom: 15%;
 }
-.mana.sm-5 {
+.mana-5 {
   background-position: -525px 0px;
-  zoom: 15%;
 }
-.mana.sm-6 {
+.mana-6 {
   background-position: -630px 0px;
-  zoom: 15%;
 }
-.mana.sm-7 {
+.mana-7 {
   background-position: -735px 0px;
-  zoom: 15%;
 }
-.mana.sm-8 {
+.mana-8 {
   background-position: -840px 0px;
-  zoom: 15%;
 }
-.mana.sm-9 {
+.mana-9 {
   background-position: -945px 0px;
-  zoom: 15%;
+}
+.mana-x {
+  background-position: -106px -210px;
+}
+.mana-w {
+  background-position: -420px -210px;
+}
+.mana-u {
+  background-position: -525px -210px;
+}
+.mana-b {
+  background-position: -630px -210px;
+}
+.mana-r {
+  background-position: -735px -210px;
+}
+.mana-g {
+  background-position: -840px -210px;
+}
+.mana-wu {
+  background-position: 0px -315px;
+}
+.mana-wb {
+  background-position: -105px -315px;
+}
+.mana-ub {
+  background-position: -210px -315px;
+}
+.mana-ur {
+  background-position: -315px -315px;
+}
+.mana-br {
+  background-position: -420px -315px;
+}
+.mana-bg {
+  background-position: -525px -315px;
+}
+.mana-rw {
+  background-position: -630px -315px;
+}
+.mana-rg {
+  background-position: -735px -315px;
+}
+.mana-gw {
+  background-position: -840px -315px;
+}
+.mana-gu {
+  background-position: -945px -315px;
 }

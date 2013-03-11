@@ -8,24 +8,36 @@ body {
 
 
 #library {
-    padding: 15px;
-    text-align: center;
-    background-color: #AAA;
+    padding:            8px;
+    text-align:         center;
+    background-color:   #555;
+    border-radius:      5px;
+
     .row {
         background-color: #EEE;
         margin: auto;
+
+        &:nth-child(even) {
+            background-color: #AAA;
+        }
+
         div {
             text-align: left;
             padding: 2px;
-            background-color: #EEE;
 
             &.image-placeholder {
                 max-width: 250px;
                 background: #000;
-                border-radius: 15px;
-                padding: 10px;
+                border-radius: 17px;
+                padding: 6px;
                 margin: 40px;
                 display: none;
+            }
+            &[data-lfield='rarity'] {
+                text-align: center;
+            }
+            &[data-lfield='power-toughness'] {
+                text-align: center;
             }
         }
     }
@@ -44,40 +56,10 @@ body {
 }
 
 
-@mana-1: -105px -0px;
-@mana-2: -210px -0px;
-@mana-3: -315px -0px;
-@mana-4: -420px -0px;
-@mana-5: -525px -0px;
-@mana-6: -630px -0px;
-@mana-7: -735px -0px;
-@mana-8: -840px -0px;
-@mana-9: -945px -0px;
+/* ***** MANA SYMBOLS ***** */
 
-
-@mana-x: -106px -210px;
-
-@mana-w:  -420px -210px;
-@mana-u:  -525px -210px;
-@mana-r:  -630px -210px;
-@mana-b:  -735px -210px;
-@mana-g:  -840px -210px;
-
-@mana-wu:   -0px -315px;
-@mana-wb: -105px -315px;
-@mana-ub: -210px -315px;
-@mana-ur: -315px -315px;
-@mana-br: -420px -315px;
-@mana-bg: -525px -315px;
-@mana-rw: -630px -315px;
-@mana-rg: -735px -315px;
-@mana-gw: -840px -315px;
-@mana-gu: -945px -315px;
-
-
-@mana-small: 15%;
-
-.mana {
+[class^="mana-"],
+[class*=" mana-"] {
     background: url('../img/mana.png');
     background-repeat: no-repeat;
     width: 100px;
@@ -89,106 +71,41 @@ body {
         display: inline-block;
         float:  left;
     }
-
-    &.sm-w {
-        background-position: @mana-w;
-        zoom: @mana-small;
+    &.small {
+        zoom: 15%;
     }
-    &.sm-u {
-        background-position: @mana-u;
-        zoom: @mana-small;
-    }
-    &.sm-r {
-        background-position: @mana-r;
-        zoom: @mana-small;
-    }
-    &.sm-b {
-        background-position: @mana-b;
-        zoom: @mana-small;
-    }
-    &.sm-g {
-        background-position: @mana-g;
-        zoom: @mana-small;
-    }
-    &.sm-wu {
-        background-position: @mana-wu;
-        zoom: @mana-small;
-    }
-    &.sm-wb {
-        background-position: @mana-wb;
-        zoom: @mana-small;
-    }
-    &.sm-ub {
-        background-position: @mana-ub;
-        zoom: @mana-small;
-    }
-    &.sm-ur {
-        background-position: @mana-ur;
-        zoom: @mana-small;
-    }
-    &.sm-br {
-        background-position: @mana-br;
-        zoom: @mana-small;
-    }
-    &.sm-bg {
-        background-position: @mana-bg;
-        zoom: @mana-small;
-    }
-    &.sm-rw {
-        background-position: @mana-rw;
-        zoom: @mana-small;
-    }
-    &.sm-rg {
-        background-position: @mana-rg;
-        zoom: @mana-small;
-    }
-    &.sm-gw {
-        background-position: @mana-gw;
-        zoom: @mana-small;
-    }
-    &.sm-gu {
-        background-position: @mana-gu;
-        zoom: @mana-small;
-    }
-    &.sm-x {
-        background-position: @mana-x;
-        zoom: @mana-small;
-    }
-    &.sm-1 {
-        background-position: @mana-1;
-        zoom: @mana-small;
-    }
-    &.sm-2 {
-        background-position: @mana-2;
-        zoom: @mana-small;
-    }
-    &.sm-3 {
-        background-position: @mana-3;
-        zoom: @mana-small;
-    }
-    &.sm-4 {
-        background-position: @mana-4;
-        zoom: @mana-small;
-    }
-    &.sm-5 {
-        background-position: @mana-5;
-        zoom: @mana-small;
-    }
-    &.sm-6 {
-        background-position: @mana-6;
-        zoom: @mana-small;
-    }
-    &.sm-7 {
-        background-position: @mana-7;
-        zoom: @mana-small;
-    }
-    &.sm-8 {
-        background-position: @mana-8;
-        zoom: @mana-small;
-    }
-    &.sm-9 {
-        background-position: @mana-9;
-        zoom: @mana-small;
-    }
-
 }
+
+
+.mana-1  { background-position: -105px -0px; }
+.mana-2  { background-position: -210px -0px; }
+.mana-3  { background-position: -315px -0px; }
+.mana-4  { background-position: -420px -0px; }
+.mana-5  { background-position: -525px -0px; }
+.mana-6  { background-position: -630px -0px; }
+.mana-7  { background-position: -735px -0px; }
+.mana-8  { background-position: -840px -0px; }
+.mana-9  { background-position: -945px -0px; }
+
+.mana-x  { background-position: -106px -210px; }
+
+.mana-w  { background-position: -420px -210px; }
+.mana-u  { background-position: -525px -210px; }
+.mana-b  { background-position: -630px -210px; }
+.mana-r  { background-position: -735px -210px; }
+.mana-g  { background-position: -840px -210px; }
+
+.mana-wu { background-position:   -0px -315px; }
+.mana-wb { background-position: -105px -315px; }
+.mana-ub { background-position: -210px -315px; }
+.mana-ur { background-position: -315px -315px; }
+.mana-br { background-position: -420px -315px; }
+.mana-bg { background-position: -525px -315px; }
+.mana-rw { background-position: -630px -315px; }
+.mana-rg { background-position: -735px -315px; }
+.mana-gw { background-position: -840px -315px; }
+.mana-gu { background-position: -945px -315px; }
+
+
+
+

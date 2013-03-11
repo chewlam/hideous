@@ -20,7 +20,7 @@ Artist:		Trevor Claxton
 Rarity:		C
 Card #:		2/249
 
-Card Name:	Angel Skirmisher
+Card Name:	Angelic Skirmisher
 Card Color:	W
 Mana Cost:	4WW
 Type & Class:	Creature - Angel

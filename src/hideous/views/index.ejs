@@ -4,6 +4,7 @@
     <title><%= title %></title>
     <link rel='stylesheet' href='/css/style.css' />
     <link rel='stylesheet' href='/css/bootstrap.css' />
+    <link rel="icon" type="image/png" href="/img/H.png" />
     <script type="text/javascript" src="/js/jquery-1.9.1.js" ></script>
     <script type="text/javascript" src="/js/library.js" ></script>
   </head>
@@ -13,39 +14,50 @@
             <h1>Welcome to <%= title %></h1>
 
             <%=cards.length %> CARDS. <br>
-            <i class="mana sm-w"> </i> <i class="mana sm-u"> </i> <i class="mana sm-b"> </i> <i class="mana sm-r"> </i>  <i class="mana sm-g"> </i> 
+            <i class="mana-w small"> </i> <i class="mana-u small"> </i> <i class="mana-b small"> </i> <i class="mana-r small"> </i>  <i class="mana-g small"> </i> 
             <br>
-            <i class="mana sm-bg"> </i>  <i class="mana sm-gw"> </i>  <i class="mana sm-rw"> </i>  <i class="mana sm-ub"> </i>  <i class="mana sm-rg"> </i>  <i class="mana sm-ur"> </i> 
-            <i class="mana sm-wb"> </i> <i class="mana sm-br"> </i> <i class="mana sm-gu"> </i> <i class="mana sm-wu"> </i>  <i class="mana sm-x"> </i> 
+            <i class="mana-bg small"> </i>  <i class="mana-gw small"> </i>  <i class="mana-rw small"> </i>  <i class="mana-ub small"> </i>  <i class="mana-rg small"> </i>  <i class="mana-ur small"> </i> 
+            <i class="mana-wb small"> </i> <i class="mana-br small"> </i> <i class="mana-gu small"> </i> <i class="mana-wu small"> </i>  
             <br>
-            <i class="mana sm-1"> </i> <i class="mana sm-2"> </i> <i class="mana sm-3"> </i> <i class="mana sm-4"> </i>  <i class="mana sm-5"> </i> 
-            <i class="mana sm-6"> </i> <i class="mana sm-7"> </i> 
+            <i class="mana-x small"> </i> <i class="mana-1 small"> </i> <i class="mana-2 small"> </i> <i class="mana-3 small"> </i> <i class="mana-4 small"> </i>  <i class="mana-5 small"> </i> 
+            <i class="mana-6 small"> </i> <i class="mana-7 small"> </i> 
             <br>
             <div id="library">
                 <div class="row header">
                     <div class="span3" data-lfield='name'> name </div>
                     <div class="span3" data-lfield='type'> type </div>
                     <div class="span2" data-lfield='mana'> mana  </div>
-                    <div class="span1" data-lfield='power-toughness'> pow/tou</div>
+                    <div class="span2" data-lfield='power-toughness'> pow/tou</div>
                     <div class="span1" data-lfield='rarity'> rarity</div>
-                    <div class="span1" data-lfield='set'> set </div>
                 </div>
                 <%  cards.forEach (function (card) {  %>
-                <div class="row">
+                <div class="row" data-set="<%= card.set %>" data-card-name="<%= card.name %>">
                     <div class="span3" data-lfield='name'> 
-                        <a class="showcard" href="#" data-set="<%= card.set %>" data-card-name="<%= card.name %>"><%= card.name %></a>
+                        <a class="showcard" href="#"><%= card.name %></a>
                     </div>
                     <div class="span3" data-lfield='type'> <%= card.type %> </div>
                     <div class="span2" data-lfield='mana'> 
                         <%  for (var i=0; i<card.mana.length; i++) { %>
-                                <i class="mana sm-<%=card.mana[i] %>"></i>
+                                <i class="mana-<%=card.mana[i]%> small"></i>
                         <%  }  %>
                     </div>
-                    <div class="span1" data-lfield='power-toughness'> 
-                        <%= (card.power ? card.power + " / " + (card.toughness ? card.toughness : '*') : (card.toughness ? "* / " + card.toughness : "")) %> 
+                    <div class="span2" data-lfield='power-toughness'> 
+                        <% if (card.power && card.toughness) { %>
+                            <%= card.power %> / <%= card.toughness %>
+                        <% } else if (!card.power && card.toughness) { %>
+                            * / <%= card.toughness %>
+                        <% } else if (card.power) { 
+                                var re = /^%(\d)#$/;
+                                if (card.power.search(re) > -1) { %>
+                                    <%= card.power.replace(re,"{$1}") %> 
+                        <%      } else {  %>
+                                    <%= card.power %> 
+                        <%      }
+                            } %>
                     </div>
-                    <div class="span1" data-lfield='rarity'> <%= card.rarity %> </div>
-                    <div class="span1" data-lfield='set'> <%= card.set %> </div>
+                    <div class="span1" data-lfield='rarity'>
+                        <img src='/img/sets/<%= (card.set + "_" + card.rarity).toLowerCase() %>.jpg'>
+                    </div>
                     <div class="image-placeholder"> </div>
                 </div>
 

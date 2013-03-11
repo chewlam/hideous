@@ -1,0 +1,1 @@
+nodemon --watch ../src/hideous ../src/hideous/app.js

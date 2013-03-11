@@ -34,6 +34,8 @@ app.configure('development', function(){
 });
 
 app.get('/', routes.index);
+app.get('/library', routes.index);
+app.get('/drafting', routes.drafting);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
