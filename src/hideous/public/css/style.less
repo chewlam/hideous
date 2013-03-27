@@ -6,6 +6,55 @@ a {
 body {
 }
 
+img.card-container {
+    max-width: 200px;
+    background: #000;
+    border-radius: 17px;
+    padding: 6px;
+    margin: 3px;
+
+    &.small {
+        max-width: 200px;
+        background: #000;
+        border-radius: 10px;
+        padding: 3px; 
+    }
+    &.foil {
+        background: #C0C0C0 !important; 
+    }
+    &.foil-overlay {
+        background: transparent; 
+        max-width: 200px;
+        border-radius: 10px;
+        padding: 3px;
+        opacity: 0.6;
+        position: absolute;
+    }
+}
+
+
+#drafting {
+    width: 1100px;
+    margin: 20px 5%;
+    text-align: center;
+
+    .booster-pack {
+        border-top: #999 3px solid;
+        padding: 10px;
+
+        .booster-wrapper {
+            max-width: 200px;
+        }
+
+        .cards {
+            text-align: left;
+            div {
+                display: inline-block;
+            }
+        }
+    }
+}
+
 
 #library {
     padding:            8px;
@@ -26,10 +75,6 @@ body {
             padding: 2px;
 
             &.image-placeholder {
-                max-width: 250px;
-                background: #000;
-                border-radius: 17px;
-                padding: 6px;
                 margin: 40px;
                 display: none;
             }

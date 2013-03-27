@@ -17,14 +17,14 @@ exports.index = function(req, res){
 
     var sort = {name : 1};
 
-    var f = function (err, cards) {
+    var renderLibrary = function (err, cards) {
         if (err) 
             console.log ("Encountered error");
         else 
             res.render('index', {title : 'Hideous - Library', cards : cards});
     }
 
-    new Library ().getCards (sort, f);
+    new Library ().getCards (sort, renderLibrary);
 };
 
 
@@ -44,76 +44,137 @@ exports.drafting = function(req, res){
         res.send ("Draft format not specified");
         return;
     }
-
-    var build_packs = function (err) {
-        if (q.format == "sealed") {
-            if (!q.packs) {
-                res.send ("Packs for sealed draft are not specified");
-                return;
-            }
-
-            var packs = q.packs.split(",");
-            var default_set = {C : 10, U : 3, R : 1, M : 0, land : 1};
-            var output = new Array;
-
-            for (var i=0; i<packs.length; i++) {
-
-                var set = new Object;
-                _.extend(set, default_set);
-
-                var has_foil = false;
-                var expansion = packs[i];
-
-                if (Math.floor((Math.random()*8)+1) == 1) {
-                    //has mythic, replaces rare card
-                    set.M = 1;
-                    set.R = 0;
-                }
-
-                if (Math.floor((Math.random()*70)+1) == 1) {
-                    // has foil, replaces one common card
-                    set.C = 9;
-                    has_foil = true;
-                }
-
-                packs[i] = new Array;
-                var total_cards = 0;
-                for (var key in set) {
-                    total_cards += library[expansion][key].length;
-
-                    for (var j=0; j<set[key]; j++) {
-                        // TODO, need to guard against the same card being added 2x
-                        var num = Math.floor((Math.random()*library[expansion][key].length));
-                        console.log(key + " -- " + library[expansion][key][num].name);
-                        packs[i].push(library[expansion][key][num]);
-                    }
-                }
-
-                if (has_foil) {
-                    var num = Math.floor((Math.random()*total_cards));
-                    var foil_card = new Object;
-                    for (var key in set) {
-                        if (num < library[expansion][key].length) {
-                            _.extend(foil_card, library[expansion][key][num]);
-                            foil_card.foil = true;
-                        }
-                        else {
-                            num -= library[expansion][key].length;
-                        }
-                    }
-
-
-                    packs[i].push(foil_card);
-                    console.log("FOIL -- " + foil_card.name);
-                }
-            }
-            output.push(packs)
-            res.send(output);
-        }
+    else if (q.format == "sealed" && !q.packs) {
+        res.send ("Packs for sealed draft are not specified");
+        return;
     }
 
 
-    var format_library_by_set_rarity = function (err, cards) {
+    var default_booster_contents = { C : 10, U : 3, R : 1, M : 0, LND : 1 };
+
+    var build_packs = function (err) {
+
+        var packs = new Array;
+        var test_mode = false;
+
+        if (q.format == "test") {
+            test_mode = true;
+            for (var i=0; i<5000; i++) {
+                packs[i] = "RTR";                
+            }
+        }
+        else {
+            packs = q.packs.split(",");
+        }
+
+        var output = new Array;
+
+        for (var i=0; i<packs.length; i++) {
+            packs[i] = generate_booster(packs[i]);
+        }
+
+        var tester = new Object;
+        tester.packs = packs.length;
+
+        for (var pack in packs) {
+            var expansion = pack.expansion;
+            for (var card_name in pack.cards) {
+                var card = library[expansion]['BY_NAME'][card_name];
+
+                if (test_mode ) {
+                    var id = card.card_no;
+                    if (!tester[expansion])
+                        tester[expansion] = new Object;
+
+                    var key = card.rarity;
+
+                    if (!tester[expansion][key])
+                        tester[expansion][key] = new Object;
+
+                    if (!tester[expansion][key][id])
+                        tester[expansion][key][id] = 1;
+                    else
+                        tester[expansion][key][id] = tester[expansion][key][id] + 1;
+                }
+            }
+            for (var card_name in pack.foils) {
+                var card = library[expansion]['BY_NAME'][card_name];
+
+                if (test_mode === 1) {
+                    var id = card.card_no;
+                    var key = "foil";
+
+                    if (!tester[expansion][key])
+                        tester[expansion][key] = new Object;
+
+                    if (!tester[expansion][key][id])
+                        tester[expansion][key][id] = 1;
+                    else
+                        tester[expansion][key][id] = tester[expansion][key][id] + 1;
+                }
+            }
+        }
+
+        if (test_mode) {
+            res.send (packs);
+        }
+        else {
+            res.render('drafting', {title : 'Hideous - Drafting' , packs : packs});
+        }
+    }
+
+    var generate_booster = function (expansion) {
+        var contents = new Object;
+        _.extend(contents, default_booster_contents);
+
+        var has_foil = false;
+
+        if (Math.floor(Math.random()*8) === 0) {
+            //has mythic, replaces rare card
+            contents.M = 1;
+            contents.R -= 1;
+        }
+
+        if (Math.floor(Math.random()*70) === 0) {
+            // has foil, replaces one common card
+            contents.C -= 1;
+            has_foil = true;
+        }
+
+        var booster = new Object;
+        booster.expansion = expansion;
+        booster.cards = new Array;
+
+        for (var key in contents) {
+            var used = new Object;
+
+            for (var j=0; j<contents[key]; j++) {
+                do {                     // guard against the same card being added 2x
+                    var index = Math.floor(Math.random()*library[expansion][key].length);
+                }  while (used[index]);
+
+                // console.log(key + " -- " + library[expansion][key][num].name);
+                booster.cards.push(library[expansion][key][index].name);
+                used[index] = true;
+            }
+        }
+
+        if (has_foil) {
+            var keys = Object.keys(library[expansion]['BY_CARD_NO']);
+            var total_cards = keys.length;
+            var index = Math.floor(Math.random()*total_cards);
+            var card = library[expansion]['BY_CARD_NO'][keys[index]];
+
+            console.log ('foil -- ' + card.name);
+
+            booster.foils = new Array;
+            booster.foils.push(card.name);
+        }
+        return booster;
+    }
+
+
+    var format_library = function (err, cards) {
         if (err)  {
             console.log ("Encountered error");
         }
@@ -125,31 +186,27 @@ exports.drafting = function(req, res){
                 library[cards[i].set]['U'] = new Array;
                 library[cards[i].set]['R'] = new Array;
                 library[cards[i].set]['M'] = new Array;
-                library[cards[i].set]['land'] = new Array;
+                library[cards[i].set]['LND'] = new Array;
+                library[cards[i].set]['BY_NAME'] = new Object;
+                library[cards[i].set]['BY_CARD_NO'] = new Object;
             }
 
             if (cards[i].type.indexOf("Basic Land") > -1) {
-                library[cards[i].set]["land"].push(cards[i]);
+                library[cards[i].set]["LND"].push(cards[i]);
             }
             else {
                 library[cards[i].set][cards[i].rarity].push(cards[i]);
             }
+
+            // TODO: basic lands have the same name, and sometimes, in a set, there are other cards with the same name.
+            library[cards[i].set]['BY_NAME'][cards[i].name] = cards[i];
+            library[cards[i].set]['BY_CARD_NO'][cards[i].card_no] = cards[i];
         }
 
-        console.log (library.RTR.C.length);
-        console.log (library.RTR.U.length);
-        console.log (library.RTR.R.length);
-        console.log (library.RTR.M.length);
-        console.log (library.RTR.land.length);
-        console.log (library.GTC.C.length);
-        console.log (library.GTC.U.length);
-        console.log (library.GTC.R.length);
-        console.log (library.GTC.M.length);
-        console.log (library.GTC.land.length);
         build_packs();
     }
 
-    new Library ().getCards (sort, format_library_by_set_rarity);
+    new Library ().getCards (sort, format_library);
 };
 
 

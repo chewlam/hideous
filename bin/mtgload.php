@@ -95,7 +95,7 @@ class MtgCards {
             }
             else if ($key == "Card #") {
                 $data = explode("/", $value);
-                $new_card[$this->dbfield_map[$key]] = $data[1];
+                $new_card[$this->dbfield_map[$key]] = $data[0];
             }
             else if (!empty($this->dbfield_map[$key])) {
                 $new_card[$this->dbfield_map[$key]] = $value;

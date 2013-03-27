@@ -1428,7 +1428,7 @@ Artist:		Mike Bierek
 Rarity:		R
 Card #:		130/274
 
-Card Name:	Oak Street Inkeeper
+Card Name:	Oak Street Innkeeper
 Card Color:	G
 Mana Cost:	2G
 Type & Class:	Creature - Elf
